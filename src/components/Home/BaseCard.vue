@@ -8,8 +8,8 @@
 			<div>
 				<div class="cardTitle flex flex-row  justify-between">
 					<p class="font-bold text-xl">Avatar</p>
-					<ion-icon :icon="starOutline" class="text-2xl"></ion-icon>
-
+					<ion-icon :icon="starOutline" class="text-2xl hover:text-yellow-400 cursor-pointer"
+						v-on:click="addToFavorite('avatar')"></ion-icon>
 				</div>
 				<div class="cardDurationYear">
 					<p class="text-sm">3H10 - 2022</p>
@@ -39,9 +39,41 @@
 	</div>
 </template>
 
-<script setup lang="ts">
+<script lang="ts">
 import { starOutline } from "ionicons/icons"
 import { IonIcon } from "@ionic/vue"
+
+import { defineComponent, ref } from 'vue'
+import { useFavoriteStore } from '../../stores/favorite'
+
+export default defineComponent({
+	name: 'App',
+	components: {
+		IonIcon,
+	},
+	setup() {
+		const favorite = useFavoriteStore()
+
+		const itemName = ref('')
+
+		function addToFavorite(e: string) {
+			// if (!itemName.value) return
+			// favorite.addItem(itemName.value)
+			favorite.addItem(e)
+			// itemName.value = ''
+		}
+
+		// @ts-ignore
+		window.stores = { favorite }
+
+		return {
+			itemName,
+			addToFavorite,
+			favorite,
+			starOutline
+		}
+	}
+})
 </script>
 
 <style scoped>

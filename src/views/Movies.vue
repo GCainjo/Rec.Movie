@@ -1,5 +1,5 @@
 <template>
-	<div id="listMovie" class="w-full h-screen text-white mt-24">
+	<div id="listMovie" class="w-full text-white mt-24">
 		<BaseTabs />
 	</div>
 </template>

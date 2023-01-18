@@ -1,14 +1,9 @@
 <template>
-	<div :class="{
-		'flex space-x-4': variant === 'horizontal',
-	}">
-		<ul class="list-none bg-blue-900 bg-opacity-30 p-1.5 rounded-lg text-center overflow-auto whitespace-nowrap"
-			:class="{
-				'flex items-center mb-6': variant === 'vertical',
-			}">
-			<li v-for="(tab, index) in tabList" :key="index" class="w-full px-4 py-1.5 rounded-lg" :class="{
-				'text-blue-600 bg-white shadow-xl': index + 1 === activeTab,
-				'text-white': index + 1 !== activeTab,
+	<div class="flex flex-col mt-10">
+		<ul class="list-none p-1.5 text-center overflow-auto whitespace-nowrap flex border rounded-lg">
+			<li v-for="(tab, index) in tabList" :key="index" class="px-4 py-1.5 rounded-lg" :class="{
+				'text-black bg-white font-bold': index + 1 === activeTab,
+				'text-white font-bold': index + 1 !== activeTab,
 			}">
 				<label :for="`${index}`" v-text="tab" class="cursor-pointer block" />
 				<input :id="`${index}`" type="radio" :name="`${index}-tab`" :value="index + 1" v-model="activeTab"
@@ -16,26 +11,30 @@
 			</li>
 		</ul>
 		<template v-for="(tab, index) in tabList">
-			<div :key="index" v-if="index + 1 === activeTab" class="flex-grow bg-white rounded-lg shadow-xl p-4 text-black">
-				<slot :name="`tabPanel-${index + 1}`" />
+			<div :key="index" v-if="index + 1 === activeTab" class="py-5 grid grid-cols-5 auto-cols-auto gap-6">
+				<!-- <slot :name="`tabPanel-${index + 1}`" /> -->
+				<BaseCards />
+				<BaseCards />
+				<BaseCards />
+				<BaseCards />
+				<BaseCards />
+				<BaseCards />
 			</div>
 		</template>
 	</div>
 </template>
 
 <script lang="ts">
+import BaseCards from './BaseCards.vue';
 export default {
+	components: {
+		BaseCards,
+	},
 	props: {
 		tabList: {
 			type: Array,
 			required: true,
-		},
-		variant: {
-			type: String,
-			required: false,
-			default: () => "vertical",
-			validator: (value: string) => ["horizontal", "vertical"].includes(value),
-		},
+		}
 	},
 	data() {
 		return {

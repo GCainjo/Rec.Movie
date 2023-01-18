@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { personOutline } from "ionicons/icons"
+import { star } from "ionicons/icons"
 import { IonIcon } from "@ionic/vue"
 </script>
 <template>
@@ -9,10 +9,10 @@ import { IonIcon } from "@ionic/vue"
 				<div id="Header" class="container mx-auto">
 					<ul class="flex p-4 mt-4 mflex-row space-x-8 font-medium ">
 						<li>
-							<router-link to="/" class="bloc text-white">Accueil</router-link>
+							<router-link to="/" class="bloc text-gray-600">Accueil</router-link>
 						</li>
 						<li>
-							<router-link to="/movies" class="block text-gray-800 hover:text-white ">Liste des
+							<router-link to="/movies" class="block text-gray-600 hover:text-white">Liste des
 								films</router-link>
 						</li>
 					</ul>
@@ -23,25 +23,20 @@ import { IonIcon } from "@ionic/vue"
 				<span class="self-center text-xl font-semibold whitespace-nowrap text-white">REC. Movie</span>
 			</div>
 			<div class="flex items-center justify-end w-1/3">
-				<!-- <LaUserSolid /> -->
-				<ion-icon :icon="personOutline" class="text-2xl text-white"></ion-icon>
-
+				<ion-icon :icon="star" class="text-2xl text-yellow-400"></ion-icon>
 			</div>
 		</div>
 	</nav>
 </template>
 
 <script lang="ts">
-// export default defineComponent({
-// 	components: { IonIcon },
-// 	setup() {
-// 		return {
-// 			menu,
-// 		}
-// 	}
-// })
+export default {
+	components: { IonIcon },
+}
 </script>
 
 <style scoped>
-
+.router-link-active {
+	color: white;
+}
 </style>
