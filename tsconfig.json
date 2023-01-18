@@ -11,6 +11,8 @@
     "esModuleInterop": true,
     "lib": [
       "ESNext",
+      "es5",
+      "es6",
       "DOM"
     ],
     "skipLibCheck": true,
