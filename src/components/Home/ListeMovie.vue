@@ -4,16 +4,33 @@
 			<h2 class="text-2xl font-bold text-white">Les 4 films du moment</h2>
 		</div>
 		<div id="listMovie" class="mt-10 mb-10 grid grid-cols-3 auto-cols-auto gap-6">
-			<BaseCard />
-			<BaseCard />
-			<BaseCard />
-			<BaseCard />
+			<BaseCard v-for="item in movies.movies" :key="item.title" :movie-element="item" />
 		</div>
 	</div>
 </template>
 
-<script setup lang="ts">
+<script  lang="ts">
 import BaseCard from './BaseCard.vue';
+import { defineComponent, onMounted } from 'vue'
+import { useMoviesStore } from '../../stores/movies';
+
+export default defineComponent({
+	components: { BaseCard },
+	setup() {
+		const movies = useMoviesStore()
+
+		onMounted(() => {
+			movies.getPopularMovies();
+		})
+
+		// @ts-ignore
+		window.stores = { movies }
+
+		return {
+			movies
+		}
+	}
+})
 </script>
 
 <style scoped>

@@ -1,35 +1,40 @@
-<script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
-import BaseHeader from './views/BaseHeader.vue'
-</script>
 
 <template>
   <div class="flex flex-col w-full justify-center items-center">
     <BaseHeader />
     <router-view />
-
-    <!-- <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-    <HelloWorld msg="Vite + Vue" /> -->
   </div>
 </template>
 
+<script lang="ts">
+import { defineComponent, onMounted } from 'vue'
+import BaseHeader from './components/Header/BaseHeader.vue'
+
+import { useMoviesStore } from "./stores/movies";
+
+
+export default defineComponent({
+  components: {
+    BaseHeader
+  },
+  setup() {
+    const movies = useMoviesStore()
+
+    onMounted(() => {
+      movies.getMovieGenre();
+    })
+
+    // @ts-ignore
+    window.stores = { movies }
+
+    return {
+      movies
+    }
+  }
+})
+</script>
+
 <style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-}
 
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
 </style>
+

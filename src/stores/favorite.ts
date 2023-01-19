@@ -6,22 +6,22 @@ export const useFavoriteStore = defineStore({
 		rawItems: [] as string[],
 	}),
 	getters: {
-		items: (state): Array<{ name: string; amount: number }> =>
+		items: (state): Array<string> =>
 			state.rawItems.reduce((items, item) => {
-				const existingItem = items.find((it) => it.name === item)
+				const existingItem = items.find((it) => it === item)
 
 				if (!existingItem) {
-					items.push({ name: item, amount: 1 })
-				} else {
-					existingItem.amount++
+					items.push(item)
 				}
 
 				return items
-			}, [] as Array<{ name: string; amount: number }>),
+			}, [] as Array<string>),
 	},
 	actions: {
 		addItem(name: string) {
-			this.rawItems.push(name)
+			if (!this.rawItems.some(data => data === name)) {
+				this.rawItems.push(name)
+			}
 		},
 
 		removeItem(name: string) {

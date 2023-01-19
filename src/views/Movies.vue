@@ -5,14 +5,19 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, onMounted } from 'vue'
 import BaseTabs from '../components/Movies/BaseTabs.vue';
 
 export default defineComponent({
 	setup() {
+		onMounted(() => {
+			console.log("test")
+			//moviesStore.getMovies();
+		})
 		return {};
 	},
-	components: { BaseTabs }
+	components: { BaseTabs },
+
 })
 </script>
 
