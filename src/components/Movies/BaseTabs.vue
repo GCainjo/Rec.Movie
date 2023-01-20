@@ -23,10 +23,7 @@ export default defineComponent({
 	},
 	setup() {
 		const movies = useMoviesStore()
-
-		// @ts-ignore
-		window.stores = { movies }
-
+		
 		return {
 			movies,
 		}

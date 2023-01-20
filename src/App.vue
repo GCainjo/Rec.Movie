@@ -22,10 +22,8 @@ export default defineComponent({
 
     onMounted(() => {
       movies.getGenre();
+      movies.getBackgroundMovie();
     })
-
-    // @ts-ignore
-    window.stores = { movies }
 
     return {
       movies

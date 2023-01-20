@@ -23,20 +23,21 @@ type Genre = {
 export const useMoviesStore = defineStore({
 	id: 'movies',
 	state: () => ({
+		moviesBackground: [] as Movies[],
 		movies: [] as Movies[],
 		moviesGenre: [] as Movies[],
 		genres: [] as Genre[],
 		genresTab: [] as Genre[]
 	}),
 	getters: {
-		popularMovies: (state) => {
+		popularMovies: (state): Array<Movies> => {
 			return state.movies
 		},
 
-		genresMovies: (state) => {
+		genresMovies: (state): Array<Genre> => {
 			return state.genres
 		},
-		genresTabMovies: (state) => {
+		genresTabMovies: (state): Array<Genre> => {
 			return state.genresTab
 		}
 	},
@@ -70,5 +71,12 @@ export const useMoviesStore = defineStore({
 			const response = await result.json()
 			this.moviesGenre = response.results
 		},
+
+		async getBackgroundMovie() {
+			const result = await fetch(`
+			https://api.themoviedb.org/3/search/movie?api_key=48a3c057ca7767953d872ee5e5726b39&language=fr&query=Dune&page=1&include_adult=false`)
+			const data = await result.json()
+			this.moviesBackground = data.results.slice(0, 1);
+		}
 	}
 })

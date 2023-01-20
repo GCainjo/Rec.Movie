@@ -24,7 +24,7 @@
 					<ion-icon :icon="star" class="text-2xl text-yellow-400"></ion-icon>
 					<div
 						class="bg-red-400 w-5 h-5  flex items-center justify-center -translate-x-3 translate-y-3 rounded-full">
-						<p class="text-white text-sm">{{ favorite.items.length }}</p>
+						<p class="text-white text-sm">{{ favorite.getFavorites.length }}</p>
 					</div>
 				</router-link>
 			</div>
@@ -47,9 +47,7 @@ export default defineComponent({
 		const favorite = useFavoriteStore()
 
 		const itemName = ref('')
-		// @ts-ignore
-		window.stores = { favorite }
-
+		
 		return {
 			itemName,
 			favorite,

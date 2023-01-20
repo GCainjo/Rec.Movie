@@ -3,11 +3,11 @@ import { defineStore, acceptHMRUpdate } from 'pinia'
 export const useFavoriteStore = defineStore({
 	id: 'favorite',
 	state: () => ({
-		rawItems: [] as string[],
+		favorites: [] as string[],
 	}),
 	getters: {
-		items: (state): Array<string> =>
-			state.rawItems.reduce((items, item) => {
+		getFavorites: (state): Array<string> =>
+			state.favorites.reduce((items, item) => {
 				const existingItem = items.find((it) => it === item)
 
 				if (!existingItem) {
@@ -19,14 +19,14 @@ export const useFavoriteStore = defineStore({
 	},
 	actions: {
 		addItem(name: string) {
-			if (!this.rawItems.some(data => data === name)) {
-				this.rawItems.push(name)
+			if (!this.favorites.some(data => data === name)) {
+				this.favorites.push(name)
 			}
 		},
 
 		removeItem(name: string) {
-			const i = this.rawItems.lastIndexOf(name)
-			if (i > -1) this.rawItems.splice(i, 1)
+			const i = this.favorites.lastIndexOf(name)
+			if (i > -1) this.favorites.splice(i, 1)
 		},
 
 	},

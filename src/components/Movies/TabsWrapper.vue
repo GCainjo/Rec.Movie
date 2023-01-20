@@ -43,9 +43,7 @@ export default defineComponent({
 		const currentPage = ref(1);
 
 		const movies = useMoviesStore()
-		// @ts-ignore
-		window.stores = { movies }
-
+		
 		onMounted(() => {
 			var filterId = movies.genresTabMovies.filter(el => el.id === 28);
 			movies.getMoviesByGenre(filterId, 1)

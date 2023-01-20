@@ -9,8 +9,8 @@
 				<div class="cardTitle flex flex-row  justify-between">
 					<p class="font-bold text-xl">{{ movieElement?.title }}</p>
 					<ion-icon :icon="starOutline" class="text-2xl hover:text-yellow-400 cursor-pointer"
-						:class="{ 'text-yellow-400': favorite.items.includes(movieElement?.title) }"
-						v-on:click="favorite.items.includes(movieElement?.title) ? favorite.removeItem(movieElement?.title) : favorite.addItem(movieElement?.title)"></ion-icon>
+						:class="{ 'text-yellow-400': favorite.getFavorites.includes(movieElement?.title) }"
+						v-on:click="favorite.getFavorites.includes(movieElement?.title) ? favorite.removeItem(movieElement?.title) : favorite.addItem(movieElement?.title)"></ion-icon>
 				</div>
 				<div class="cardDurationYear">
 					<p class="text-sm">{{ new Date(movieElement?.release_date).getUTCFullYear() }}</p>
@@ -50,9 +50,6 @@ export default defineComponent({
 		const favorite = useFavoriteStore()
 
 		const itemName = ref('')
-
-		// @ts-ignore
-		window.stores = { favorite }
 
 		return {
 			itemName,
