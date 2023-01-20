@@ -21,7 +21,7 @@ export default defineComponent({
     const movies = useMoviesStore()
 
     onMounted(() => {
-      movies.getMovieGenre();
+      movies.getGenre();
     })
 
     // @ts-ignore

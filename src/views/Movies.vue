@@ -11,7 +11,6 @@ import BaseTabs from '../components/Movies/BaseTabs.vue';
 export default defineComponent({
 	setup() {
 		onMounted(() => {
-			console.log("test")
 			//moviesStore.getMovies();
 		})
 		return {};

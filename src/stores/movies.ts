@@ -24,6 +24,7 @@ export const useMoviesStore = defineStore({
 	id: 'movies',
 	state: () => ({
 		movies: [] as Movies[],
+		moviesGenre: [] as Movies[],
 		genres: [] as Genre[],
 		genresTab: [] as Genre[]
 	}),
@@ -48,7 +49,7 @@ export const useMoviesStore = defineStore({
 			this.movies = data.results.slice(0, 4) as Movies[];
 		},
 
-		async getMovieGenre() {
+		async getGenre() {
 			const result = await fetch('https://api.themoviedb.org/3/genre/movie/list?api_key=48a3c057ca7767953d872ee5e5726b39&language=fr')
 			const response = await result.json()
 
@@ -62,12 +63,12 @@ export const useMoviesStore = defineStore({
 				}
 				return false
 			})
-		}
+		},
 
-		//async getMoviesByCategory() {
-		// 	const result = await fetch('https://api.themoviedb.org/3/discover/movie?api_key=48a3c057ca7767953d872ee5e5726b39&language=fr&include_adult=false&include_video=false&with_genres=51,84')
-		// 	const response = await result.json()
-		// 	this.movies = response
-		// },
+		async getMoviesByGenre(genre: { id: number, name: string }[], page: number) {
+			const result = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=48a3c057ca7767953d872ee5e5726b39&language=fr&include_adult=false&include_video=false&page=${page}&with_genres=${genre[0].id}`)
+			const response = await result.json()
+			this.moviesGenre = response.results
+		},
 	}
 })

@@ -51,7 +51,6 @@ export default defineComponent({
 
 		const itemName = ref('')
 
-
 		// @ts-ignore
 		window.stores = { favorite }
 
