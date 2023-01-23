@@ -33,8 +33,11 @@ export const useFavoriteStore = defineStore({
 	},
 	actions: {
 		loadFavorite() {
-			var favoritesString = localStorage.getItem("favorite")
-			this.favorites = JSON.parse(favoritesString!)
+
+			if (localStorage.getItem("favorite")) {
+				var favoritesString = localStorage.getItem("favorite")
+				this.favorites = JSON.parse(favoritesString!)
+			}
 		},
 
 		addItem(item: Movies) {
