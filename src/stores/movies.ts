@@ -1,4 +1,5 @@
 import { defineStore, acceptHMRUpdate } from 'pinia'
+import config from '../config';
 
 type Movies = {
 	adult: false,
@@ -43,7 +44,7 @@ export const useMoviesStore = defineStore({
 	},
 	actions: {
 		async getPopularMovies() {
-			const result = await fetch('https://api.themoviedb.org/3/movie/popular?api_key=48a3c057ca7767953d872ee5e5726b39&language=fr')
+			const result = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${config.API_KEY}&language=fr`)
 			const data = await result.json()
 
 			//Récupère uniquement les 4 films les plus populaires 
@@ -51,7 +52,7 @@ export const useMoviesStore = defineStore({
 		},
 
 		async getGenre() {
-			const result = await fetch('https://api.themoviedb.org/3/genre/movie/list?api_key=48a3c057ca7767953d872ee5e5726b39&language=fr')
+			const result = await fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${config.API_KEY}&language=fr`)
 			const response = await result.json()
 
 			//Récupère tous les genres
@@ -67,14 +68,14 @@ export const useMoviesStore = defineStore({
 		},
 
 		async getMoviesByGenre(genre: { id: number, name: string }[], page: number) {
-			const result = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=48a3c057ca7767953d872ee5e5726b39&language=fr&include_adult=false&include_video=false&page=${page}&with_genres=${genre[0].id}`)
+			const result = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${config.API_KEY}&language=fr&include_adult=false&include_video=false&page=${page}&with_genres=${genre[0].id}`)
 			const response = await result.json()
 			this.moviesGenre = response.results
 		},
 
 		async getBackgroundMovie() {
 			const result = await fetch(`
-			https://api.themoviedb.org/3/search/movie?api_key=48a3c057ca7767953d872ee5e5726b39&language=fr&query=Dune&page=1&include_adult=false`)
+			https://api.themoviedb.org/3/search/movie?api_key=${config.API_KEY}&language=fr&query=Dune&page=1&include_adult=false`)
 			const data = await result.json()
 			this.moviesBackground = data.results.slice(0, 1);
 		}
