@@ -1,5 +1,5 @@
 <template>
-	<p class=" py-0.5 px-1 border border-white text-white rounded-full mr-2 text-xs">{{
+	<p class=" py-0.5 px-1 border border-white text-white rounded-full mr-2 text-xs w-fit mt-2 md:mt-0 md:w-auto">{{
 		movies.genres.find(x => x.id ===
 	genreElement)?.name
 	}}</p>
@@ -19,7 +19,7 @@ export default defineComponent({
 	},
 	setup() {
 		const movies = useMoviesStore()
-		
+
 		return {
 			movies,
 		}

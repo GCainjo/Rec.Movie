@@ -2,17 +2,19 @@
 	<div class="flex flex-col mt-10">
 		<!-- Création Composant tabsHeader qui prend en props les tableaux de genre -->
 		<ul class="list-none p-1.5 text-center overflow-auto whitespace-nowrap flex border rounded-lg">
-			<li v-for="(tab, index) in movies.genresTabMovies" :key="index" class="px-4 py-1.5 rounded-lg" :class="{
-				'text-black bg-white font-bold': index + 1 === activeTab,
-				'text-white font-bold': index + 1 !== activeTab,
-			}">
+			<li v-for="(tab, index) in movies.genresTabMovies" :key="index" class="px-2 md:px-4 md:py-1.5 rounded-lg"
+				:class="{
+					'text-black bg-white font-bold': index + 1 === activeTab,
+					'text-white font-bold': index + 1 !== activeTab,
+				}">
 				<label :for="`${index}`" v-text="tab.name" class="cursor-pointer block" />
 				<input :id="`${index}`" type="radio" :name="`${index}-tab`" :value="index + 1" v-model="activeTab"
 					class="hidden" v-on:click="movies.getMoviesByGenre([tab], currentPage)" />
 			</li>
 		</ul>
 		<template v-for="(tab, index) in  movies.genresTabMovies">
-			<div :key="index" v-if="index + 1 === activeTab" class="py-5 grid grid-cols-5 auto-cols-auto gap-6">
+			<div :key="index" v-if="index + 1 === activeTab"
+				class="py-5 grid grid-cols-2 md:grid-cols-5 auto-cols-auto gap-6">
 				<slot :name="`tabPanel-${index + 1}`" />
 			</div>
 		</template>
@@ -43,7 +45,7 @@ export default defineComponent({
 		const currentPage = ref(1);
 
 		const movies = useMoviesStore()
-		
+
 		onMounted(() => {
 			var filterId = movies.genresTabMovies.filter(el => el.id === 28);
 			movies.getMoviesByGenre(filterId, 1)
