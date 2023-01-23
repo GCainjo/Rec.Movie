@@ -54,7 +54,7 @@ Création d'un Dashboard de films en Vue3 avec Pinia comme gestionnaire de store
    ```
 4.Inséré votre clé d'API dans le fichier `config.ts` ou laisser la clé existante afin de l'utiliser
    ```js
-   const API_KEY = 'ENTER YOUR API' ;
+   API_KEY: "VOTRE API_KEY",
    ```
 ## Meta
 
