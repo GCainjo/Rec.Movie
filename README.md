@@ -43,6 +43,7 @@ Création d'un Dashboard de films en Vue3 avec Pinia comme gestionnaire de store
 ## Installation
 
 1.Récupéré la clé d'API de [https://developers.themoviedb.org/](https://developers.themoviedb.org/)
+
 2.Clone le repository
    ```sh
    git clone https://github.com/GCainjo/Rec.Movie.git
