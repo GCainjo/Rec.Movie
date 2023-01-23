@@ -8,7 +8,7 @@
   <h3 align="center">🔴 REC. Movie</h3>
 
   <p align="center">
-    Dashboard de fims
+    Dashboard de fims - 
     <a href="https://rec-movie.guillaumecainjo.fr/">Voir la demo</a>
   </p>
 </div>
@@ -17,19 +17,13 @@
 
 <!-- TABLE OF CONTENTS -->
 <details>
-  <summary>Table of Contents</summary>
+  <summary>Sommaire</summary>
   <ol>
     <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
+      <a>À propos du projet</a>
     </li>
     <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
+      <a>Installation</a>
     </li>
   </ol>
 </details>
@@ -37,34 +31,27 @@
 
 
 <!-- ABOUT THE PROJECT -->
-## About The Project
-
-### Built With
+## À propos du projet
 
 Création d'un Dashboard de films en Vue3 avec Pinia comme gestionnaire de store et les technologies TypeScript et TailwindCSS.
 
 * [![Vue][Vue.js]][Vue-url]
-* [![Typescript][Typescript.js]][Typescript-url]
+* [![Typescript][Typescript]][Typescript-url]
 * [![TailwindCSS][TailwindCSS]][TailwindCSS-url]
 
 
-
-
-<!-- GETTING STARTED -->
-## Getting Started
-
-### Installation
+## Installation
 
 1.Récupéré la clé d'API de [https://developers.themoviedb.org/](https://developers.themoviedb.org/)
-2. Clone le repository
+2.Clone le repository
    ```sh
-   git clone https://github.com/GCainjo/Rec.Movie
+   git clone https://github.com/GCainjo/Rec.Movie.git
    ```
-3. Installer les paquets NPM
+3.Installer les paquets NPM
    ```sh
    npm install
    ```
-4. Inséré votre clé d'API dans le fichier `config.ts` ou laisser la clé existante afin de l'utiliser
+4.Inséré votre clé d'API dans le fichier `config.ts` ou laisser la clé existante afin de l'utiliser
    ```js
    const API_KEY = 'ENTER YOUR API' ;
    ```
