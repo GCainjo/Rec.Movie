@@ -45,21 +45,23 @@ export const useMoviesStore = defineStore({
 	actions: {
 		async getPopularMovies() {
 			const result = await fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${config.API_KEY}&language=fr`)
-			const data = await result.json()
+				.then(data => data.json())
+				.catch(error => console.log(error));
 
 			//Récupère uniquement les 4 films les plus populaires 
-			this.movies = data.results.slice(0, 4) as Movies[];
+			this.movies = result.results.slice(0, 4) as Movies[];
 		},
 
 		async getGenre() {
 			const result = await fetch(`https://api.themoviedb.org/3/genre/movie/list?api_key=${config.API_KEY}&language=fr`)
-			const response = await result.json()
+				.then(data => data.json())
+				.catch(error => console.log(error));
 
 			//Récupère tous les genres
-			this.genres = response.genres
+			this.genres = result.genres
 
 			//Récupère uniquement les genres demandés
-			this.genresTab = response.genres.filter(function (genre: { id: number, name: string }) {
+			this.genresTab = result.genres.filter(function (genre: { id: number, name: string }) {
 				if (genre.name === "Aventure" || genre.name === "Action" || genre.name === "Animation" || genre.name === "Comédie" || genre.name === "Documentaire") {
 					return true;
 				}
@@ -69,15 +71,16 @@ export const useMoviesStore = defineStore({
 
 		async getMoviesByGenre(genre: { id: number, name: string }[], page: number) {
 			const result = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${config.API_KEY}&language=fr&include_adult=false&include_video=false&page=${page}&with_genres=${genre[0].id}`)
-			const response = await result.json()
-			this.moviesGenre = response.results
+				.then(data => data.json())
+				.catch(error => console.log(error));
+			this.moviesGenre = result.results
 		},
 
 		async getBackgroundMovie() {
-			const result = await fetch(`
-			https://api.themoviedb.org/3/search/movie?api_key=${config.API_KEY}&language=fr&query=Dune&page=1&include_adult=false`)
-			const data = await result.json()
-			this.moviesBackground = data.results.slice(0, 1);
+			const result = await fetch(`https://api.themoviedb.org/3/search/movie?api_key=${config.API_KEY}&language=fr&query=Dune&page=1&include_adult=false`)
+				.then(data => data.json())
+				.catch(error => console.log(error));
+			this.moviesBackground = result.results.slice(0, 1);
 		}
 	}
 })
