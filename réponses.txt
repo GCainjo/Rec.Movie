@@ -1,0 +1,36 @@
+Qu'est-ce qu'un pointeur ? ❌
+
+Qu'est-ce qu'un garbage collector ? ❌
+
+Qu'est-ce que le currying ?
+	Le fait de passer d'une fonction a deux paramètres à une fonction a un seul paramètre
+
+Quelle est la différence entre la programmation impérative et la programmation déclarative ?
+	La programmation impérative implique la description explicite des étapes pour résoudre un problème, tandis que la programmation déclarative se concentre sur la description de ce que le résultat doit être sans nécessairement décrire comment l'obtenir. La programmation déclarative peut être plus abstraite et moins spécifique, mais peut aussi rendre le code plus concis et facile à maintenir.
+
+Qu'est-ce qu'une promise et quelles sont ses utilisations possible ? 
+	Une promesse est un objet JavaScript qui représente l'aboutissement ou l'échec d'une opération asynchrone. Une promesse peut être soit "résolue" (c'est-à-dire qu'elle a réussi), soit "rejetée" (c'est-à-dire qu'elle a échoué). 
+
+Comment fonctionne async / await ?
+	async/await est une syntaxe de programmation qui facilite l'écriture de code asynchrone en JavaScript. async est utilisé pour déclarer une fonction asynchrone, tandis que await est utilisé pour attendre la résolution d'une promesse dans une fonction asynchrone.
+
+Peux-tu décrire ton process de développement idéal, de l'écriture du code à sa mise en production ?
+
+Qu'est-ce que la généricité ? ❌
+
+Qu'est-ce qu'un design pattern et décris un design pattern que tu maîtrises. ❌
+
+Qu'est ce qu'un anti pattern et quel est celui que tu as le plus rencontré ? ❌
+
+Fort de ton expérience, comment te prémunirais-tu de cet anti pattern ? ❌
+
+Quelle est la façon la plus évidente d'optimiser une requête à la base de données ?
+Être précis dans la requete en indiquant l'index de la requete
+
+Comment estimes-tu la complexité d'un algorithme ?
+Le temps d'execution de l'algorithme et l'utilisation de la mémoire
+
+
+Qu'est-ce qu'un effet de bord et comme les évites-tu ? 
+Un effet de bord resulte de la modification d'une variable  en dehors de la fonctionoù ils ont été créés.
+ On peut limité l'utilisation des variables globales / utilisation de fonction pure
